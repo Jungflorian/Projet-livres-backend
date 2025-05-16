@@ -1,7 +1,10 @@
 const http = require('http');
 const app = require('./app');
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
+app.set('port', port);
 const server = http.createServer(app);
 
-server.listen(process.env.PORT || 3000,);
+server.listen(port, () => {
+  console.log(`Serveur lancé sur le port ${port}`);
+});

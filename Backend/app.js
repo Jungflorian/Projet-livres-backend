@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-const stuffRoutes = require('./routes/stuff');
+const stuffRoutes = require('./routes/books');
+const userRoutes = require('./routes/user');
 
 app.use(express.json());
 
@@ -20,6 +21,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/stuff', stuffRoutes);
+app.get('/', (req, res) => {
+    res.status(200).send('API is running');
+});
+
+app.use('/api/books', stuffRoutes);
+app.use('/api/auth', userRoutes);
+
 
 module.exports = app;

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-const stuffRoutes = require('./routes/books');
+const booksRoutes = require('./routes/books');
 const userRoutes = require('./routes/user');
 
 app.use(express.json());
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     res.status(200).send('API is running');
 });
 
-app.use('/api/books', stuffRoutes);
+app.use('/api/books', booksRoutes);
 app.use('/api/auth', userRoutes);
 
 

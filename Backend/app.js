@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
+const path = require('path');
 const booksRoutes = require('./routes/books');
 const userRoutes = require('./routes/user');
 
@@ -13,6 +13,8 @@ mongoose.connect('mongodb+srv://florianjung:w3sqjKjG1XhcI7JS@cluster0.o4c5ll6.mo
     console.log('Connexion à MongoDB échouée !');
     console.error(error);
   });
+
+  app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); 
@@ -27,6 +29,5 @@ app.get('/', (req, res) => {
 
 app.use('/api/books', booksRoutes);
 app.use('/api/auth', userRoutes);
-
 
 module.exports = app;

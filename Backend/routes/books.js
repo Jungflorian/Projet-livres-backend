@@ -8,6 +8,7 @@ router.post('/', auth,multer, stuffCtrl.createBook);
 router.delete('/:id',auth,stuffCtrl.deleteBook);
 router.put('/:id',auth, multer, stuffCtrl.updateBook);
 router.get('/:id', stuffCtrl.getOneBook);
-router.get('/',auth,stuffCtrl.getAllBooks);
+router.get('/',stuffCtrl.getAllBooks);
+router.post('/:id/rating', auth, stuffCtrl.rateBook);
 
 module.exports = router;
